@@ -3,12 +3,14 @@
 #
 
 cd ../libsodium
+git fetch
 git checkout qkd_sodium 
 ./autogen.sh
 ./configure --prefix=$1
 make clean;make -j8;make install
 
 cd ../c-toxcore
+git fetch
 git checkout qkd_c-toxcore
 ./autogen.sh
  ./configure --prefix=$1 CFLAGS=-g3 --with-libsodium-headers=$1/include --with-libsodium-libs=$1/lib LIBS=-lssl -lcrypto --no-recursion
@@ -16,6 +18,7 @@ make clean;make -j8;make install
 cd ..
 
 cd qTox
+git fetch
 git checkout qkd_qTox
 ./bootstrap.sh --without-tox 
 rm -rf build
