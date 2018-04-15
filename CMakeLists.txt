@@ -600,13 +600,15 @@ MESSAGE( STATUS "CMAKE_C_FLAGS: " ${CMAKE_C_FLAGS} )
 # the compiler flags for compiling C++ sources
 MESSAGE( STATUS "CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS} )
 
+LINK_DIRECTORIES(${CMAKE_PREFIX_PATH}/lib)
+
 add_library(${PROJECT_NAME}_static
   STATIC
   ${${PROJECT_NAME}_FORMS}
   ${${PROJECT_NAME}_SOURCES}
   ${${PROJECT_NAME}_QM_FILES})
 target_link_libraries(${PROJECT_NAME}_static
-  ${ALL_LIBRARIES})
+  ${ALL_LIBRARIES} sodium toxcore toxav toxencryptsave)
 
 add_executable(${PROJECT_NAME}
   WIN32

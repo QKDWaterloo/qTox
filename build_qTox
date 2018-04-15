@@ -1,0 +1,12 @@
+#
+# ./build_qTox {install_dir}
+#
+
+./bootstrap.sh --without-tox 
+rm -rf build
+mkdir build
+cd build
+cmake -DCMAKE_PREFIX_PATH=$1 ..
+make -j8
+cd ..
+
