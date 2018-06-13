@@ -2,6 +2,8 @@
 # ./build_qTox {install_dir}
 #
 
+
+#:<<'END'
 cd ../libsodium
 git fetch
 git checkout qkd_sodium 
@@ -9,16 +11,17 @@ git pull
 ./autogen.sh
 ./configure --prefix=$1
 make clean;make -j8;make install
-
+#END
 cd ../c-toxcore
 git fetch
 git checkout qkd_c-toxcore
 git pull
 ./autogen.sh
- ./configure --prefix=$1 CFLAGS=-g3 --with-libsodium-headers=$1/include --with-libsodium-libs=$1/lib LIBS="-lssl -lcrypto" --no-recursion
+ ./configure --enable-qkd-keys --prefix=$1 CFLAGS=-g3 --with-libsodium-headers=$1/include --with-libsodium-libs=$1/lib LIBS="-lssl -lcrypto" --no-recursion
 make clean;make -j8;make install
 cd ..
 
+#:<<'END'
 cd qTox
 git fetch
 git checkout qkd_qTox
@@ -27,7 +30,7 @@ git pull
 rm -rf build
 mkdir build
 cd build
-cmake -DCMAKE_PREFIX_PATH=$1 ..
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=$1 ..
 make -j8
 cd ..
-
+#END
