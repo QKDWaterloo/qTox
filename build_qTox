@@ -29,7 +29,7 @@ cd ..
 # tox/tox.h is present because pkg-config needs to be adjusted for qTox
 #  to be able to see the paths:
 #
-#
+# export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${install_dir}/lib/pkgconfig
 #
 #
 
