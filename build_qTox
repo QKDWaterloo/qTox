@@ -1,7 +1,9 @@
-#
+
 # ./build_qTox {install_dir}
 #
 cd ..
+
+export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:$1/lib/pkgconfig
 
 #:<<'END'
 cd libsodium
@@ -23,15 +25,6 @@ git pull
 make clean;make -j8;make install
 cd ..
 #END
-
-#
-# qTox gives fatal error: tox/tox.h: No such file or directory even when
-# tox/tox.h is present because pkg-config needs to be adjusted for qTox
-#  to be able to see the paths:
-#
-# export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${install_dir}/lib/pkgconfig
-#
-#
 
 #:<<'END'
 cd qTox
