@@ -35,7 +35,8 @@ git pull
 rm -rf build
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH="$1;$HOME/Qt/5.11.1/gcc_64/lib/cmake" ..
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-DQKD" -DCMAKE_PREFIX_PATH="$1" ..
+#-DCMAKE_PREFIX_PATH="$1;$HOME/Qt/5.11.1/gcc_64/lib/cmake" 
 make -j8
 cd ..
 #END

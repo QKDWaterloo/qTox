@@ -152,7 +152,23 @@ void Widget::init()
     profilePicture->setObjectName("selfAvatar");
     profilePicture->setStyleSheet(Style::getStylesheet(":ui/window/profile.css"));
     ui->myProfile->insertWidget(0, profilePicture);
+#ifndef QKD
     ui->myProfile->insertSpacing(1, 7);
+#else
+    ui->myProfile->insertSpacing(5, 7);
+    auto layout = new QHBoxLayout();
+    layout->setObjectName("QKD Layout");
+    ui->myProfile->addItem(layout);
+    QLabel *label =  new QLabel(ui->statusHead);
+    label->setText("QKD");
+    QPalette p = palette();
+    p.setColor(QPalette::Background, Qt::green);
+    p.setColor(QPalette::WindowText, Qt::blue);
+    label->setPalette(p);
+    label->setAutoFillBackground(true);
+    layout->addWidget(label);
+    layout->insertSpacing(2, 5);
+#endif
 
     filterMenu = new QMenu(this);
     filterGroup = new QActionGroup(this);
