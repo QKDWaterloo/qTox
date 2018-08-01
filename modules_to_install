@@ -16,4 +16,5 @@ sudo apt-get install -y libxss-dev
 sudo apt-get install -y libgdk-pixbuf2.0-dev
 sudo apt-get install -y libgtk2.0-dev
 sudo apt-get install -y libopus-dev
+sudo apt-get install -y git 
 
